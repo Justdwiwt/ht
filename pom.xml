@@ -160,6 +160,7 @@
             <version>5.1.3.Final</version>
         </dependency>
 
+        <!-- struts2依赖包 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
