@@ -219,8 +219,8 @@
         }
 
         function toModule(moduleName) {
-            top.leftFrame.location.href = moduleName + 'Left.action';
-            top.main.location.href = moduleName + 'Main.action';
+            top.leftFrame.location.href = moduleName + '/Left.action';
+            top.main.location.href = moduleName + '/Main.action';
             linkHighlightMenu(this);
         }
     </script>
