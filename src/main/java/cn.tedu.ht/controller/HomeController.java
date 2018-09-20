@@ -30,6 +30,26 @@ public class HomeController {
         return "/home/main";
     }
 
+    @RequestMapping(value = "/left")
+    public String cargoLeft() {
+        return "/cargo/left";
+    }
+
+    @RequestMapping(value = "/Main")
+    public String cargoMain() {
+        return "/cargo/Main";
+    }
+
+    @RequestMapping(value = "/left")
+    public String baseLeft() {
+        return "/baseinfo/left";
+    }
+
+    @RequestMapping(value = "main")
+    public String baseMain() {
+        return "/baseinfo/Main";
+    }
+
     @RequestMapping("/sysadminLeft")
     public String sysadminLeft() {
         return "/sysadmin/left";
