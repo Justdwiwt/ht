@@ -30,24 +30,28 @@ public class HomeController {
         return "/home/main";
     }
 
-    @RequestMapping(value = "/left")
+    //转向cargo的left
+    @RequestMapping(value = "/cargoLeft")
     public String cargoLeft() {
         return "/cargo/left";
     }
 
-    @RequestMapping(value = "/Main")
+    //转向cargo的main
+    @RequestMapping(value = "/cargoMain")
     public String cargoMain() {
-        return "/cargo/Main";
+        return "/cargo/main";
     }
 
-    @RequestMapping(value = "/left")
-    public String baseLeft() {
+    //转向baseinfo的left
+    @RequestMapping(value = "/baseinfoLeft")
+    public String baseinfoLeft() {
         return "/baseinfo/left";
     }
 
-    @RequestMapping(value = "main")
-    public String baseMain() {
-        return "/baseinfo/Main";
+    //转向baseinfo的main
+    @RequestMapping(value = "/baseinfoMain")
+    public String baseinfoMain() {
+        return "/baseinfo/main";
     }
 
     @RequestMapping("/sysadminLeft")
