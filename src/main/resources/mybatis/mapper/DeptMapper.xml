@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.ht.mapper.DeptMapper">
+
+    <!--手动封装结果集-->
+    <resultMap id="deptRM" type="Dept" autoMapping="true">
+        <id column="dept_id" property="deptId"/>
+        <!--主表使用驼峰映射，其他字段不用写-->
+
+        <!--上级部门：一个部门只有一个上级部门-->
+        <association property="parentDept" javaType="Dept">
+            <id column="p_id" property="deptId"/>
+            <result column="p_name" property="deptName"/>
+        </association>
+    </resultMap>
+
+    <!--查询dept，自关联查询-->
+    <select id="findAll" resultMap="deptRM" parameterType="long">
+        select *
+        from dept_p d1
+                 left join (select DEPT_ID p_id, DEPT_NAME p_name from dept_p) d2 on d1.PARENT_ID = d2.p_id;
+    </select>
+
+</mapper>

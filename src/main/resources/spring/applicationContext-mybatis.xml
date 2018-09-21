@@ -12,7 +12,7 @@
         <!-- 别名包 -->
         <property name="typeAliasesPackage" value="cn.tedu.ht.pojo"/>
         <!-- mapper.xml -->
-        <!-- <property name="mapperLocations" value="classpath:mybatis/mappers/*.xml"/> -->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
     </bean>
 
     <!-- 定义Mapper接口扫描器 -->
