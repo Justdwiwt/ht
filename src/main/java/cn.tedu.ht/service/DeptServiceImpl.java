@@ -43,4 +43,9 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.findDeptById(deptId);
     }
 
+    @Override
+    public Dept findDeptBackById(String deptId) {
+        return deptMapper.findDeptBackById(deptId);
+    }
+
 }

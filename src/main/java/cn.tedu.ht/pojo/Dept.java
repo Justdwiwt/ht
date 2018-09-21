@@ -1,5 +1,6 @@
 package cn.tedu.ht.pojo;
 
+@SuppressWarnings("unused")
 public class Dept extends BaseEntity {
 
     private String deptId;

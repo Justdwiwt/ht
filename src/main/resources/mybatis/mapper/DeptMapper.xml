@@ -16,11 +16,21 @@
         </association>
     </resultMap>
 
+    <!--公共的sql语句-->
+    <sql id="selectDept">
+        select *
+        from dept_p d1
+                 left join (select DEPT_ID p_id, DEPT_NAME p_name from dept_p)
+                d2 on d1.PARENT_ID = d2.p_id
+    </sql>
+
+
     <!--查询dept，自关联查询-->
     <select id="findAll" resultMap="deptRM" parameterType="long">
         select *
         from dept_p d1
-                 left join (select DEPT_ID p_id, DEPT_NAME p_name from dept_p) d2 on d1.PARENT_ID = d2.p_id;
+                 left join (select DEPT_ID p_id, DEPT_NAME p_name from dept_p)
+                d2 on d1.PARENT_ID = d2.p_id;
     </select>
 
     <!--更新部门状态-->
@@ -62,13 +72,23 @@
         </trim>
         values
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="deptId != null">dept_id,</if>
-            <if test="parentDept != null">parent_id,</if>
-            <if test="deptName != null">dept_name,</if>
-            <if test="state != null">state,</if>
+            <if test="deptId != null">#{deptId},</if>
+            <if test="parentDept != null">#{parentDept.deptId},</if>
+            <if test="deptName != null">#{deptName},</if>
+            <if test="state != null">#{state}</if>
         </trim>
     </insert>
 
+    <!--根据部门id查询数据库是否存在数据-->
+    <select id="findDeptById" resultType="Dept">
+        select *
+        from dept_p
+        where DEPT_ID = #{deptId}
+    </select>
 
+    <!--修改功能的数据回显-->
+    <select id="findDeptBackById" resultMap="deptRM">
+        <include refid="selectDept"/>where DEPT_ID=#{deptId}
+    </select>
 
 </mapper>

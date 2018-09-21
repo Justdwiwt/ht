@@ -18,4 +18,6 @@ public interface DeptService {
 
     Dept findDeptById(String deptId);
 
+    Dept findDeptBackById(String deptId);
+
 }

@@ -21,4 +21,6 @@ public interface DeptMapper {
 
     Dept findDeptById(String deptId);
 
+    Dept findDeptBackById(String deptId);
+
 }

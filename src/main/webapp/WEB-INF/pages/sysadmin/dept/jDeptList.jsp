@@ -15,7 +15,7 @@
                 <div id="navMenubar">
                     <ul>
                         <li id="view"><a href="#" onclick="formSubmit('toview','_self');this.blur();">查看</a></li>
-                        <li id="new"><a href="#" onclick="formSubmit('tocreate','_self');this.blur();">新增</a></li>
+                        <li id="new"><a href="#" onclick="formSubmit('tosave','_self');this.blur();">新增</a></li>
                         <li id="update"><a href="#" onclick="formSubmit('toupdate','_self');this.blur();">修改</a></li>
                         <li id="delete"><a href="#" onclick="formSubmit('delete','_self');this.blur();">删除</a></li>
                         <li id="new"><a href="#" onclick="formSubmit('start','_self');this.blur();">启用</a></li>
@@ -54,7 +54,7 @@
                         <td>${status.index+1}</td>
                         <td>${d.deptId}</td>
                         <td>${d.parentDept.deptName}</td>
-                        <td><a href="dept/toview?id=${d.deptId}">${d.deptName}</a></td>
+                        <td><a href="toview?id=${d.deptId}">${d.deptName}</a></td>
                         <td>
                             <c:if test="${d.state==1}"><a href="stop?deptId=${d.deptId}"><font
                                     color="green">启用</font></a></c:if>
