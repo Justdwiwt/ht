@@ -40,7 +40,7 @@ public class DeptController {
 
     //部门状态的启动
     @RequestMapping(value = "/sysadmin/dept/start")
-    public String toStart(@RequestParam(value = "deptId",defaultValue = "0") String[] deptIds) {
+    public String toStart(@RequestParam(value = "deptId", defaultValue = "0") String[] deptIds) {
         int state = 1;
         deptService.updateState(deptIds, state);
         return "redirect:/sysadmin/dept/list";
@@ -100,6 +100,14 @@ public class DeptController {
             return "forward:/sysadmin/dept/tosave";
         }
         return "redirect:/sysadmin/dept/list";
+    }
+
+
+    // 查看
+    @RequestMapping(value = "/sysadmin/dept/toview")
+    public String toView() {
+
+        return "/sysadmin/dept/jDeptView";
     }
 
 }
