@@ -28,4 +28,18 @@ public class DeptController {
         return "/sysadmin/dept/jDeptList";
     }
 
+    @RequestMapping(value = "/sysadmin/dept/stop")
+    public String toStop(String deptId) {
+        int state = 0;
+        deptService.updateState(deptId, state);
+        return "redirect:/sysadmin/dept/list";
+    }
+
+    @RequestMapping(value = "/sysadmin/dept/start")
+    public String toStart(String deptId) {
+        int state = 1;
+        deptService.updateState(deptId, state);
+        return "redirect:/sysadmin/dept/list";
+    }
+
 }

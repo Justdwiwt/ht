@@ -18,4 +18,9 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.findAll();
     }
 
+    @Override
+    public void updateState(String deptId, int state) {
+        deptMapper.updateState(deptId, state);
+    }
+
 }

@@ -8,4 +8,6 @@ public interface DeptService {
 
     List<Dept> findAll();
 
+    void updateState(String deptId, int state);
+
 }

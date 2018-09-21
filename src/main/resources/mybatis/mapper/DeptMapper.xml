@@ -23,4 +23,12 @@
                  left join (select DEPT_ID p_id, DEPT_NAME p_name from dept_p) d2 on d1.PARENT_ID = d2.p_id;
     </select>
 
+    <!--更新部门状态-->
+    <update id="updateState">
+        # 两个变量同事取值，使用map集合
+        update dept_p
+        set STATE = #{state}
+        where DEPT_ID = #{deptId}
+    </update>
+
 </mapper>
