@@ -17,4 +17,8 @@ public interface DeptMapper {
 
     List<Dept> findParentDept();
 
+    void saveDept(Dept dept);
+
+    Dept findDeptById(String deptId);
+
 }

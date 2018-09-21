@@ -56,4 +56,23 @@ public class DeptController {
         return "/sysadmin/dept/jDeptSave";
     }
 
+    @RequestMapping(value = "/sysadmin/dept/save")
+    public String saveDept(Dept dept, Model model) {
+        String deptId = dept.getDeptId();
+        Dept checkDept = deptService.findDeptById(deptId);
+        if (checkDept != null) {
+            model.addAttribute("errorInfo", "该部门编号已存在");
+            return "forward:/sysadmin/dept/tosave";
+        }
+        deptService.saveDept(dept);
+        return "redirect:/sysadmin/dept/list";
+    }
+
+
+    @RequestMapping(value = "/sysadmin/dept/toupdate")
+    public String toUpdateDept(String deptId) {
+        Dept dept = deptService.findDeptById(deptId);
+        return "/sysadmin/dept/jDeptUpdate";
+    }
+
 }

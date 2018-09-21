@@ -33,4 +33,14 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.findParentDept();
     }
 
+    @Override
+    public void saveDept(Dept dept) {
+        deptMapper.saveDept(dept);
+    }
+
+    @Override
+    public Dept findDeptById(String deptId) {
+        return deptMapper.findDeptById(deptId);
+    }
+
 }

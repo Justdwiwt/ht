@@ -51,4 +51,24 @@
         from dept_p
     </select>
 
+    <!--动态插入一条部门信息-->
+    <insert id="saveDept">
+        insert into dept_p
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deptId != null">dept_id,</if>
+            <if test="parentDept != null">parent_id,</if>
+            <if test="deptName != null">dept_name,</if>
+            <if test="state != null">state,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deptId != null">dept_id,</if>
+            <if test="parentDept != null">parent_id,</if>
+            <if test="deptName != null">dept_name,</if>
+            <if test="state != null">state,</if>
+        </trim>
+    </insert>
+
+
+
 </mapper>
