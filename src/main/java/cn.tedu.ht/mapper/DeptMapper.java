@@ -10,7 +10,9 @@ public interface DeptMapper {
     List<Dept> findAll();
 
     // 使用注解对map集合进行封装
-    void updateState(@Param(value = "deptId") String deptId,
+    void updateState(@Param(value = "deptIds") String[] deptIds,
                      @Param(value = "state") int state);
+
+    void deleteDept(String[] deptIds);
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,17 +30,28 @@ public class DeptController {
     }
 
     @RequestMapping(value = "/sysadmin/dept/stop")
-    public String toStop(String deptId) {
+    public String toStop(@RequestParam(value = "deptId", defaultValue = "0") String[] deptIds) {
         int state = 0;
-        deptService.updateState(deptId, state);
+        deptService.updateState(deptIds, state);
         return "redirect:/sysadmin/dept/list";
     }
 
     @RequestMapping(value = "/sysadmin/dept/start")
-    public String toStart(String deptId) {
+    public String toStart(@RequestParam(value = "deptId") String[] deptIds) {
         int state = 1;
-        deptService.updateState(deptId, state);
+        deptService.updateState(deptIds, state);
         return "redirect:/sysadmin/dept/list";
+    }
+
+    @RequestMapping(value = "/sysadmin/dept/delete")
+    public String deleteDept(@RequestParam(value = "deptId", defaultValue = "0") String[] deptIds) {
+        deptService.deleteDept(deptIds);
+        return "redirect:/sysadmin/dept/list";
+    }
+
+    @RequestMapping(value = "/sysadmin/dept/tosave")
+    public String toSaveDept() {
+        return "/sysadmin/dept/jDeptSave";
     }
 
 }

@@ -19,8 +19,13 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public void updateState(String deptId, int state) {
-        deptMapper.updateState(deptId, state);
+    public void updateState(String[] deptIds, int state) {
+        deptMapper.updateState(deptIds, state);
+    }
+
+    @Override
+    public void deleteDept(String[] deptIds) {
+        deptMapper.deleteDept(deptIds);
     }
 
 }

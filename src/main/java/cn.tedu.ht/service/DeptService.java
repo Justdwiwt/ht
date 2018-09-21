@@ -8,6 +8,8 @@ public interface DeptService {
 
     List<Dept> findAll();
 
-    void updateState(String deptId, int state);
+    void updateState(String[] deptIds, int state);
+
+    void deleteDept(String[] deptIds);
 
 }
