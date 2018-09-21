@@ -28,4 +28,9 @@ public class DeptServiceImpl implements DeptService {
         deptMapper.deleteDept(deptIds);
     }
 
+    @Override
+    public List<Dept> findParentDept() {
+        return deptMapper.findParentDept();
+    }
+
 }

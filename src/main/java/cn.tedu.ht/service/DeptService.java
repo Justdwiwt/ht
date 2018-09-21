@@ -12,4 +12,6 @@ public interface DeptService {
 
     void deleteDept(String[] deptIds);
 
+    List<Dept> findParentDept();
+
 }

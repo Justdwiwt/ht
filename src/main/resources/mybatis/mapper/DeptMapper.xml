@@ -45,4 +45,10 @@
         </foreach>
     </delete>
 
+    <!--查询上级部门信息-->
+    <select id="findParentDept" resultType="Dept">
+        select *
+        from dept_p
+    </select>
+
 </mapper>

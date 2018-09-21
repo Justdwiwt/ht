@@ -15,4 +15,6 @@ public interface DeptMapper {
 
     void deleteDept(String[] deptIds);
 
+    List<Dept> findParentDept();
+
 }

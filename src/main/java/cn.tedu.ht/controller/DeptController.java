@@ -50,7 +50,9 @@ public class DeptController {
     }
 
     @RequestMapping(value = "/sysadmin/dept/tosave")
-    public String toSaveDept() {
+    public String toSaveDept(Model model) {
+        List<Dept> parentDeptList = deptService.findParentDept();
+        model.addAttribute("parentDeptList", parentDeptList);
         return "/sysadmin/dept/jDeptSave";
     }
 
