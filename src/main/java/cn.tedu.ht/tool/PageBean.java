@@ -53,8 +53,13 @@ public class PageBean<T> {
 
     @Override
     public String toString() {
-        return "PageBean [currPage=" + currPage + ", pageSize=" + pageSize + ", totalCount=" + totalCount
-                + ", totalPage=" + totalPage + ", pageList=" + pageList + "]";
+        return "PageBean{" +
+                "currPage=" + currPage +
+                ", pageSize=" + pageSize +
+                ", totalCount=" + totalCount +
+                ", totalPage=" + totalPage +
+                ", pageList=" + pageList +
+                '}';
     }
 
 }

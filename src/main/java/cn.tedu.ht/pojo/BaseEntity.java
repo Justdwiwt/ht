@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 //抽象类
+@SuppressWarnings("unused")
 public abstract class BaseEntity implements Serializable {
+
     private String createBy;
     private String createDept;
     private Date createTime;

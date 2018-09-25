@@ -1,5 +1,6 @@
 package cn.tedu.ht.pojo;
 
+@SuppressWarnings("unused")
 public class User extends BaseEntity {
 
     private String userId;
@@ -63,9 +64,14 @@ public class User extends BaseEntity {
 
     @Override
     public String toString() {
-        return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", state=" + state
-                + ", dept=" + dept + ", userInfo=" + userInfo + "]";
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", state=" + state +
+                ", dept=" + dept +
+                ", userInfo=" + userInfo +
+                '}';
     }
-
 
 }

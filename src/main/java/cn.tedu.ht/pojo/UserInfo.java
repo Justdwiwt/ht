@@ -2,6 +2,7 @@ package cn.tedu.ht.pojo;
 
 import java.util.Date;
 
+@SuppressWarnings("unused")
 public class UserInfo extends BaseEntity {
     private String userInfoId;
     private String name;
@@ -124,10 +125,21 @@ public class UserInfo extends BaseEntity {
 
     @Override
     public String toString() {
-        return "UserInfo [userInfoId=" + userInfoId + ", name=" + name + ", cardNo=" + cardNo + ", joinDate=" + joinDate
-                + ", managerInfo=" + managerInfo + ", salary=" + salary + ", birthday=" + birthday + ", gender="
-                + gender + ", station=" + station + ", telephone=" + telephone + ", userLevel=" + userLevel
-                + ", remark=" + remark + ", orderNo=" + orderNo + "]";
+        return "UserInfo{" +
+                "userInfoId='" + userInfoId + '\'' +
+                ", name='" + name + '\'' +
+                ", cardNo='" + cardNo + '\'' +
+                ", joinDate=" + joinDate +
+                ", managerInfo=" + managerInfo +
+                ", salary=" + salary +
+                ", birthday=" + birthday +
+                ", gender='" + gender + '\'' +
+                ", station='" + station + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", userLevel='" + userLevel + '\'' +
+                ", remark='" + remark + '\'' +
+                ", orderNo=" + orderNo +
+                '}';
     }
 
 }

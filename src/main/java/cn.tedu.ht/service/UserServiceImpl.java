@@ -12,14 +12,25 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * 查询全部的信息
+     *
+     * @return User
+     */
     @Override
     public List<User> findAll() {
         return userMapper.findAll();
     }
 
+    /**
+     * 查询用户的总数据量
+     *
+     * @return 用户的总数据量
+     */
     @Override
     public int getUserTotalCount() {
         return userMapper.getUserTotalCount();
@@ -27,9 +38,18 @@ public class UserServiceImpl implements UserService {
 
     //返回值为：pageBean的对象
     //不只是 List<User>  还有 分页的相关数据
+
+    /**
+     * 根据分页，查询当前分页的数据
+     *
+     * @param currentPage 当前页码
+     * @param pageSize    最大页码
+     * @return PageBean
+     */
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public PageBean<User> findUserByPages(int currentPage, int pageSize) {
-        PageBean<User> pageBean = new PageBean<User>();
+        PageBean<User> pageBean = new PageBean<>();
         //封装当前的页数
         pageBean.setCurrPage(currentPage);
         //封装每一页的数量
@@ -48,11 +68,21 @@ public class UserServiceImpl implements UserService {
         return pageBean;
     }
 
+    /**
+     * 查询上级领导的信息
+     *
+     * @return User
+     */
     @Override
     public List<User> findManagerUser() {
         return userMapper.findManagerUser();
     }
 
+    /**
+     * 新增操作
+     *
+     * @param user User
+     */
     public void saveUser(User user) {
         //自动的生成主键
         String userId = UUID.randomUUID().toString();

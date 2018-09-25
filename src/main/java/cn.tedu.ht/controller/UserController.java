@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/sysadmin/user") //请求的公共部分
 public class UserController extends BaseController {
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -30,13 +31,23 @@ public class UserController extends BaseController {
 		model.addAttribute("userList", userList);
 		return "/sysadmin/user/jUserList";
 	}*/
+
+    /**
+     * 用户列表页面的跳转
+     *
+     * @param currentPage 当前页码
+     * @param pageSize    最大页码
+     * @param model       userList
+     *                    pageBean
+     * @return /sysadmin/user/jUserList
+     */
     @RequestMapping(value = "/list") //每个请求的action
-    public String toUserList(
-            @RequestParam(defaultValue = "1") int currentPage,
-            @RequestParam(defaultValue = "10") int pageSize, Model model) {
+    public String toUserList(@RequestParam(defaultValue = "1") int currentPage,
+                             @RequestParam(defaultValue = "10") int pageSize,
+                             Model model) {
         //查询分页的数据：默认查询，每一页为10条数据，从第0条开始
-        System.out.println("************" + currentPage);
-        System.out.println("------------" + pageSize);
+//        System.out.println("************" + currentPage);
+//        System.out.println("------------" + pageSize);
         PageBean<User> pageBean = userService.findUserByPages(currentPage, pageSize);
         List<User> userList = pageBean.getPageList();
         //数据填充
@@ -45,23 +56,34 @@ public class UserController extends BaseController {
         return "/sysadmin/user/jUserList";
     }
 
-    //点击新增按钮，跳转页面
+    /**
+     * 点击新增按钮，跳转页面
+     *
+     * @param model userInfoList
+     *              deptList
+     * @return /sysadmin/user/jUserSave
+     */
     @RequestMapping(value = "/tosave")
     public String toSaveUser(Model model) {
         //准备 上级领导的信息
         List<User> userInfoList = userService.findManagerUser();
         //准备 所属部门的信息
         List<Dept> deptList = deptService.findAll();
-        for (Dept dept : deptList) {
-            System.out.println("===========" + dept);
-        }
+//        for (Dept dept : deptList)
+//            System.out.println("===========" + dept);
         //数据填充
         model.addAttribute("userInfoList", userInfoList);
         model.addAttribute("deptList", deptList);
         return "/sysadmin/user/jUserSave";
     }
 
-    //点击保存按钮，实现保存功能
+    /**
+     * 点击保存按钮，实现保存功能
+     *
+     * @param user  User对象
+     * @param model unused
+     * @return redirect:/sysadmin/user/list
+     */
     @RequestMapping(value = "/save")
     public String saveUser(User user, Model model) {
         //检验用户的用户名是否存在冲突

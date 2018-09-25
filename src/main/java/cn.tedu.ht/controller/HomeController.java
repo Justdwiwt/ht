@@ -7,13 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    //转向欢迎页面
+    /**
+     * 转向欢迎页面
+     *
+     * @return /home/fmain
+     */
     @RequestMapping("/home")
     public String home() {
         return "/home/fmain";
     }
 
-    //转向tilte标题栏页面
+    /**
+     * 转向tilte标题栏页面
+     *
+     * @return /home/title
+     */
     @RequestMapping("/title")
     public String title() {
         return "/home/title";
@@ -74,11 +82,24 @@ public class HomeController {
     //使用RestFul的风格 定义请求的方法
     //对应着前端页面： moduleName+'/Left.action'
     //   /home/Left.action   /baseinfo/Left.action
+
+    /**
+     * 使用RestFul的风格 定义请求的方法
+     *
+     * @param moduleName /home
+     * @return /home/left
+     */
     @RequestMapping(value = "/{moduleName}/Left.action")
     public String moduelLeft(@PathVariable String moduleName) {
         return moduleName + "/left"; // home/left
     }
 
+    /**
+     * 使用RestFul的风格 定义请求的方法
+     *
+     * @param moduleName /home
+     * @return /home/main
+     */
     @RequestMapping(value = "/{moduleName}/Main.action")
     public String moduleMain(@PathVariable String moduleName) {
         return moduleName + "/main"; //home/main
