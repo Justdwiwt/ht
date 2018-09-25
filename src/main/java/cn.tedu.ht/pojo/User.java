@@ -1,14 +1,16 @@
 package cn.tedu.ht.pojo;
 
-public class User {
+public class User extends BaseEntity {
 
     private String userId;
     private String username;
     private String password;
     private Integer state;
 
+    //描述  dept 与 user  的 从user的角度出发一对一的关系
     private Dept dept;
 
+    //描述 userinfo 与 user 的 一对一的关系
     private UserInfo userInfo;
 
     public String getUserId() {
@@ -61,14 +63,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", state=" + state +
-                ", dept=" + dept +
-                ", userInfo=" + userInfo +
-                '}';
+        return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", state=" + state
+                + ", dept=" + dept + ", userInfo=" + userInfo + "]";
     }
+
 
 }

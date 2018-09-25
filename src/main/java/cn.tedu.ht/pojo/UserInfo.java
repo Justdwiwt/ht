@@ -2,15 +2,13 @@ package cn.tedu.ht.pojo;
 
 import java.util.Date;
 
-public class UserInfo {
-
+public class UserInfo extends BaseEntity {
     private String userInfoId;
     private String name;
     private String cardNo;
     private Date joinDate;
-
-    private UserInfo managerInfo;
-
+    // 自关联描述 :一对一
+    private UserInfo managerInfo;//上级领导
     private Double salary;
     private Date birthday;
     private String gender;
@@ -126,21 +124,10 @@ public class UserInfo {
 
     @Override
     public String toString() {
-        return "UserInfo{" +
-                "userInfoId='" + userInfoId + '\'' +
-                ", name='" + name + '\'' +
-                ", cardNo='" + cardNo + '\'' +
-                ", joinDate=" + joinDate +
-                ", managerInfo=" + managerInfo +
-                ", salary=" + salary +
-                ", birthday=" + birthday +
-                ", gender='" + gender + '\'' +
-                ", station='" + station + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", userLevel='" + userLevel + '\'' +
-                ", remark='" + remark + '\'' +
-                ", orderNo=" + orderNo +
-                '}';
+        return "UserInfo [userInfoId=" + userInfoId + ", name=" + name + ", cardNo=" + cardNo + ", joinDate=" + joinDate
+                + ", managerInfo=" + managerInfo + ", salary=" + salary + ", birthday=" + birthday + ", gender="
+                + gender + ", station=" + station + ", telephone=" + telephone + ", userLevel=" + userLevel
+                + ", remark=" + remark + ", orderNo=" + orderNo + "]";
     }
 
 }

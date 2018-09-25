@@ -2,13 +2,14 @@ package cn.tedu.ht.tool;
 
 import java.util.List;
 
+//公共的分页类：用于所有的列表页面的查询
 public class PageBean<T> {
 
-    private int currPage;
-    private int pageSize;
-    private int totalCount;
-    private int totalPage;
-    private List<T> list;
+    private int currPage;//当前的第几页
+    private int pageSize;//每一页的数据行数
+    private int totalCount;//所有的数据行数
+    private int totalPage;//所有的页数
+    private List<T> pageList;//当前分页的数据
 
     public int getCurrPage() {
         return currPage;
@@ -42,23 +43,18 @@ public class PageBean<T> {
         this.totalPage = totalPage;
     }
 
-    public List<T> getList() {
-        return list;
+    public List<T> getPageList() {
+        return pageList;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setPageList(List<T> pageList) {
+        this.pageList = pageList;
     }
 
     @Override
     public String toString() {
-        return "PageBean{" +
-                "currPage=" + currPage +
-                ", pageSize=" + pageSize +
-                ", totalCount=" + totalCount +
-                ", totalPage=" + totalPage +
-                ", list=" + list +
-                '}';
+        return "PageBean [currPage=" + currPage + ", pageSize=" + pageSize + ", totalCount=" + totalCount
+                + ", totalPage=" + totalPage + ", pageList=" + pageList + "]";
     }
 
 }

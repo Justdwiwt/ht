@@ -5,29 +5,54 @@
 <head>
     <title>部门新增</title>
     <script type="text/javascript">
-        $(function () {
+
+        $(function () {//页面加载时执行的函数
+            //找到deptId的input框
             $("#deptId").blur(function () {
-                var deptId = $("#deptId").val();
-                deptId = $("input[name='deptId']").val();
+                //var deptId = $("#deptId").val();
+                var deptId = $("input[name='deptId']").val();
+                //ajax的异步请求
                 $.ajax({
                     url: "/sysadmin/dept/checkDeptId",
-                    data: {deptId: deptId},
-                    type: "post",
-                    dataType: "json",
+                    data: {deptId: deptId},//data中存放的为deptId的key 和 value
+                    type: "post",//请求的发送方式
+                    dataType: "json",//结果的返回值类型
                     success: function (data) {
+                        //部门编号存在
                         if (data.result == "true") {
                             $("#checkresult").html("该部门编号被占用");
-                        } else {
+                        }
+                        //部门编号不存在
+                        else {
                             $("#checkresult").html("该部门编号可以使用");
                         }
                     }
                 })
-
-            });
+            });//失去焦点的时间
         })
 
-    </script>
+        /* $(function() {
+            $("#deptId").blur(function() {
+                var deptId = $("input[name='deptId']").val();
+                $.ajax({
+                    url:"/sysadmin/dept/checkDeptId",
+                    data:{
+                        deptId:$("input[name='deptId']").val()
+                    },
+                    type:"POST",
+                    dataType:"json",
+                    success:function(data){
+                        if (data.result =="true") {
+                            $("#checkresult").html("部门编号可以使用");
 
+                        } else {
+                            $("#checkresult").html("部门编号已经占用");
+                        }
+                    }
+                })
+            });
+        }) */
+    </script>
 </head>
 
 <body>
@@ -38,7 +63,7 @@
             <div id="innerMenubar">
                 <div id="navMenubar">
                     <ul>
-                        <li id="view"><a href="#" onclick="window.history.go(-1);">返回</a></li>
+                        <li id="view"><a href="#" onclick="formSubmit('list','_self');">返回</a></li>
                         <li id="new"><a href="#" onclick="formSubmit('save','_self');this.blur();">保存</a></li>
                     </ul>
                 </div>
@@ -58,13 +83,12 @@
             <table id="ec_table" class="tableRegion" width="98%">
                 <tr class="odd">
                     <td>部门编号：</td>
-                    <td><input type="text" name="deptId"/>${errorInfo }</td>
+                    <td><input id="deptId" type="text" name="deptId"/>
+                        <span id="checkresult"></span></td>
                 </tr>
                 <tr class="odd">
                     <td>部门名称：</td>
-                    <td><input type="text" name="deptName" id="deptId"/>
-                        <span id="checkresult"></span>
-                    </td>
+                    <td><input type="text" name="deptName"/></td>
                 </tr>
                 <tr class="odd">
                     <td>上级部门：</td>

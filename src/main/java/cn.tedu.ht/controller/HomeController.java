@@ -19,60 +19,69 @@ public class HomeController {
         return "/home/title";
     }
 
-//    //转向home的左侧页面
-//    @RequestMapping("/homeLeft")
-//    public String homeLeft() {
-//        return "/home/left";
-//    }
-//
-//    //转向home的操作页面
-//    @RequestMapping("/homeMain")
-//    public String homeMain() {
-//        return "/home/main";
-//    }
-//
-//    //转向cargo的left
-//    @RequestMapping(value = "/cargoLeft")
-//    public String cargoLeft() {
-//        return "/cargo/left";
-//    }
-//
-//    //转向cargo的main
-//    @RequestMapping(value = "/cargoMain")
-//    public String cargoMain() {
-//        return "/cargo/main";
-//    }
-//
-//    //转向baseinfo的left
-//    @RequestMapping(value = "/baseinfoLeft")
-//    public String baseinfoLeft() {
-//        return "/baseinfo/left";
-//    }
-//
-//    //转向baseinfo的main
-//    @RequestMapping(value = "/baseinfoMain")
-//    public String baseinfoMain() {
-//        return "/baseinfo/main";
-//    }
-//
-//    @RequestMapping("/sysadminLeft")
-//    public String sysadminLeft() {
-//        return "/sysadmin/left";
-//    }
-//
-//    @RequestMapping("/sysadminMain")
-//    public String sysadminMain() {
-//        return "/sysadmin/main";
-//    }
+	/*//转向home的左侧页面
+	@RequestMapping("/homeLeft")
+	public String homeLeft(){
+		return "/home/left";
+	}
 
-    //使用RestFul定义请求方法
+	//转向home的操作页面
+	@RequestMapping("/homeMain")
+	public String homeMain(){
+		return "/home/main";
+	}
+
+	//转向cargo页面：左菜单栏
+	//cargoLeft : 请求是由 前端页面  moduleName + "Left.action"
+	@RequestMapping(value="/cargoLeft")
+	public String cargoLeft() {
+		//货运管理的左菜单栏页面
+		return "/cargo/left";
+	}
+
+	//货运管理的右界面
+	@RequestMapping(value="/cargoMain")
+	public String cargoMain() {
+		//货运管理的右界面
+		return "/cargo/main";
+	}
+
+	//转向baseinfo页面：左菜单栏
+	@RequestMapping(value="/baseinfoLeft")
+	public String baseinfoLeft() {
+		//基础信息模块的左菜单栏页面
+		return "/baseinfo/left";
+	}
+
+	//baseinfo的右界面
+	@RequestMapping(value="/baseinfoMain")
+	public String baseinfoMain() {
+		//货运管理的右界面
+		return "/baseinfo/main";
+	}
+
+
+	@RequestMapping("/sysadminLeft")
+	public String sysadminLeft(){
+		return "/sysadmin/left";
+	}
+
+	@RequestMapping("/sysadminMain")
+	public String sysadminMain(){
+		return "/sysadmin/main";
+	}*/
+
+    //使用RestFul的风格 定义请求的方法
+    //对应着前端页面： moduleName+'/Left.action'
+    //   /home/Left.action   /baseinfo/Left.action
     @RequestMapping(value = "/{moduleName}/Left.action")
-    public String moduleLeft(@PathVariable String moduleName) {
-        return moduleName + "/left";
+    public String moduelLeft(@PathVariable String moduleName) {
+        return moduleName + "/left"; // home/left
     }
 
     @RequestMapping(value = "/{moduleName}/Main.action")
     public String moduleMain(@PathVariable String moduleName) {
-        return moduleName + "/main";
+        return moduleName + "/main"; //home/main
     }
+
 }
