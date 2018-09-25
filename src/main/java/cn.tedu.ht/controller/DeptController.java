@@ -2,11 +2,13 @@ package cn.tedu.ht.controller;
 
 import cn.tedu.ht.pojo.Dept;
 import cn.tedu.ht.service.DeptService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -108,6 +110,20 @@ public class DeptController {
     public String toView() {
 
         return "/sysadmin/dept/jDeptView";
+    }
+
+    // ajax异步校验deptID
+    @RequestMapping(value = "/sysadmin/dept/checkDeptId")
+    @ResponseBody   // json对象存入response中
+    public JSONObject checkDeptId(String deptId) {
+        JSONObject jsonObject = new JSONObject();
+        Dept dept = deptService.findDeptById(deptId);
+        if (dept == null) {
+            jsonObject.put("result", "false");
+        } else {
+            jsonObject.put("result", "true");
+        }
+        return jsonObject;
     }
 
 }

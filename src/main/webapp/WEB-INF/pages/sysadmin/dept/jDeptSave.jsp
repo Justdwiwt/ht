@@ -4,6 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>部门新增</title>
+    <script type="text/javascript">
+        $(function () {
+            $("#deptId").blur(function () {
+                var deptId = $("#deptId").val();
+                deptId = $("input[name='deptId']").val();
+                $.ajax({
+                    url: "/sysadmin/dept/checkDeptId",
+                    data: {deptId: deptId},
+                    type: "post",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.result == "true") {
+                            $("#checkresult").html("该部门编号被占用");
+                        } else {
+                            $("#checkresult").html("该部门编号可以使用");
+                        }
+                    }
+                })
+
+            });
+        })
+
+    </script>
+
 </head>
 
 <body>
@@ -38,7 +62,9 @@
                 </tr>
                 <tr class="odd">
                     <td>部门名称：</td>
-                    <td><input type="text" name="deptName"/></td>
+                    <td><input type="text" name="deptName" id="deptId"/>
+                        <span id="checkresult"></span>
+                    </td>
                 </tr>
                 <tr class="odd">
                     <td>上级部门：</td>
