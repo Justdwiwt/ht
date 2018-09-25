@@ -38,11 +38,25 @@
     <!--查询用户的全部信息-->
     <select id="findAll" resultMap="userRM">
         select user.*, dept.dept_name
-        from (select *from user_p u
-            left join (select p1.*, p2.*from user_info_p p1
-                left join (select user_info_id m_id, name m_name from user_info_p)
-                    p2 on p1.MANAGER_ID = p2.m_id)info on u.USER_ID = info.USER_INFO_ID)user
-                        left join dept_p dept on user.dept_id = dept.dept_id
+        from (select *
+              from user_p u
+                       left join (select p1.*, p2.*
+                                  from user_info_p p1
+                                           left join (select user_info_id m_id, name m_name from user_info_p)
+                                          p2 on p1.MANAGER_ID = p2.m_id)info on u.USER_ID = info.USER_INFO_ID)user
+                 left join dept_p dept on user.dept_id = dept.dept_id
+    </select>
+
+    <!--分页查询：查询总的数据量-->
+    <select id="getUserTotalCount" resultType="int">
+        select count(*)from (
+        <include refid="selectUser"/>
+        )uc
+    </select>
+
+    <!--分页的实现：根据第几行开始的变量和pagesize变量，确定查询的数据-->
+    <select id="findUserByPages" resultMap="userRM">
+        <include refid="selectUser"/>limit #{startRow} ,#{pageSize}
     </select>
 
 
