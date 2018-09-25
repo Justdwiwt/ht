@@ -38,13 +38,11 @@
     <!--查询用户的全部信息-->
     <select id="findAll" resultMap="userRM">
         select user.*, dept.dept_name
-        from (select *
-              from user_p u
-                       left join (select p1.*, p2.*
-                                  from user_info_p p1
-                                           left join (select user_info_id m_id, name m_name from user_info_p)
-                                          p2 on p1.MANAGER_ID = p2.m_id)info on u.USER_ID = info.USER_INFO_ID)user
-                 left join dept_p dept on user.dept_id = dept.dept_id
+        from (select *from user_p u
+            left join (select p1.*, p2.*from user_info_p p1
+                left join (select user_info_id m_id, name m_name from user_info_p)
+                    p2 on p1.MANAGER_ID = p2.m_id)info on u.USER_ID = info.USER_INFO_ID)user
+                        left join dept_p dept on user.dept_id = dept.dept_id
     </select>
 
 
