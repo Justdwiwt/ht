@@ -46,10 +46,10 @@ public class UserServiceImpl implements UserService {
      * @param pageSize    最大页码
      * @return PageBean
      */
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
+    @SuppressWarnings({"IntegerDivisionInFloatingPointContext", "Convert2Diamond"})
     @Override
     public PageBean<User> findUserByPages(int currentPage, int pageSize) {
-        PageBean<User> pageBean = new PageBean<>();
+        PageBean<User> pageBean = new PageBean<User>();
         //封装当前的页数
         pageBean.setCurrPage(currentPage);
         //封装每一页的数量
