@@ -96,4 +96,14 @@ public class UserController extends BaseController {
         return "redirect:/sysadmin/user/list";
     }
 
+    /**
+     * 查看页面
+     *
+     * @return /sysadmin/user/jUserView
+     */
+    @RequestMapping(value = "/sysadmin/user/toview")
+    public String toView() {
+        return "/sysadmin/user/jUserView";
+    }
+
 }

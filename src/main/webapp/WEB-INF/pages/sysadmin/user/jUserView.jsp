@@ -38,14 +38,14 @@
                 </tr>
                 <tr class="odd">
                     <td>用户名:</td>
-                    <td><input type="text" name="username" value="${user.username}"/></td>
+                    <td><input type="text" name="username" value="${user.username}" readonly="readonly"/></td>
                     <td>密码:</td>
-                    <td><input type="password" name="password" value="${user.password}"/></td>
+                    <td><input type="password" name="password" value="${user.password}" readonly="readonly"/></td>
                 </tr>
                 <tr class="odd">
                     <td>所属部门:</td>
                     <td>
-                        <select name="dept.deptId" style="width:120px">
+                        <select name="dept.deptId" style="width:120px" disabled="disabled">
                             <option value="">---请选择---</option>
                             <c:forEach items="${deptList}" var="d">
                                 <option value="${d.deptId}"
@@ -54,14 +54,15 @@
                         </select>
                     </td>
                     <td>真实姓名:</td>
-                    <td><input type="text" name="userInfo.name" value="${user.userInfo.name}"/></td>
+                    <td><input type="text" name="userInfo.name" value="${user.userInfo.name}" readonly="readonly"/></td>
                 </tr>
                 <tr class="odd">
                     <td>身份证号:</td>
-                    <td><input type="text" name="userInfo.cardNo" value="${user.userInfo.cardNo}"/></td>
+                    <td><input type="text" name="userInfo.cardNo" value="${user.userInfo.cardNo}" readonly="readonly"/>
+                    </td>
                     <td>上级领导:</td>
                     <td>
-                        <select name="userInfo.manager.userInfoId" style="width:120px">
+                        <select name="userInfo.manager.userInfoId" style="width:120px" disabled="disabled">
                             <option value="">---请选择---</option>
                             <c:forEach items="${managerList}" var="p">
 
@@ -79,17 +80,20 @@
                         <input type="text" style="width:90px;" name="userInfo.joinDate"
                                onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});"
 
-                               value="<fmt:formatDate value="${user.userInfo.joinDate}" pattern="yyyy-MM-dd"/>"/>
+                               value="<fmt:formatDate value="${user.userInfo.joinDate}" pattern="yyyy-MM-dd"/>"
+                               readonly="readonly"/>
                     </td>
                     <td>薪资:</td>
-                    <td><input type="text" name="userInfo.salary" value="${user.userInfo.salary}"/></td>
+                    <td><input type="text" name="userInfo.salary" value="${user.userInfo.salary}" readonly="readonly"/>
+                    </td>
                 </tr>
                 <tr class="odd">
                     <td>出生日期:</td>
                     <td>
                         <input type="text" style="width:90px;" name="userInfo.birthday"
                                onclick="WdatePicker({el:this,isShowOthers:true,dateFmt:'yyyy-MM-dd'});"
-                               value="<fmt:formatDate value="${user.userInfo.birthday}" pattern="yyyy-MM-dd"/>"/>
+                               value="<fmt:formatDate value="${user.userInfo.birthday}" pattern="yyyy-MM-dd"/>"
+                               readonly="readonly"/>
                     </td>
                     <td>性别:</td>
                     <td>
@@ -102,14 +106,16 @@
                 </tr>
                 <tr class="odd">
                     <td>岗位描述:</td>
-                    <td><input type="text" name="userInfo.station" value="${user.userInfo.station}"/></td>
+                    <td><input type="text" name="userInfo.station" value="${user.userInfo.station}"
+                               readonly="readonly"/></td>
                     <td>电话号码:</td>
-                    <td><input type="text" name="userInfo.telephone" value="${user.userInfo.telephone}"/></td>
+                    <td><input type="text" name="userInfo.telephone" value="${user.userInfo.telephone}"
+                               readonly="readonly"/></td>
                 </tr>
                 <tr class="odd">
                     <td>用户级别:</td>
                     <td>
-                        <select name="userInfo.userLevel" style="width:120px">
+                        <select name="userInfo.userLevel" style="width:120px" disabled="disabled">
 
                             <option value="4" <c:if test="${user.userInfo.userLevel==4}">selected="selected"</c:if>>
                                 普通用户
@@ -125,7 +131,8 @@
                         </select>
                     </td>
                     <td>排序号:</td>
-                    <td><input type="text" name="userInfo.orderNo" value="${user.userInfo.orderNo}"/></td>
+                    <td><input type="text" name="userInfo.orderNo" value="${user.userInfo.orderNo}"
+                               readonly="readonly"/></td>
                 </tr>
                 <tr class="odd">
                     <td>状态:</td>
