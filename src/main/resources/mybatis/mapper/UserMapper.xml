@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.ht.mapper.UserMapper">
+
+    <!--手动封装结果集-->
+    <resultMap id="userRM" type="User" autoMapping="true">
+        <id column="user_id" property="userId"/>
+        <!--从表userinfo，一对一guanx-->
+        <association property="userInfo" javaType="UserInfo">
+            <id column="user_info_id" property="userInfoId"/>
+            <result column="name" property="name"/>
+            <result column="card_no" property="cardNo"/>
+            <result column="join_date" property="joinDate"/>
+            <!--<result column="" property=""/>-->
+            <result column="salary" property="salary"/>
+            <result column="birthday" property="birthday"/>
+            <result column="gender" property="gender"/>
+            <result column="station" property="station"/>
+            <result column="telephone" property="telephone"/>
+            <result column="user_level" property="userLevel"/>
+            <result column="remark" property="remark"/>
+            <result column="order_no" property="orderNo"/>
+            <!--自关联，一对一-->
+            <association property="managerInfo" javaType="UserInfo">
+                <id column="m_id" property="userInfoId"/>
+                <result column="m_name" property="name"/>
+            </association>
+        </association>
+        <!--从表dept，一对一-->
+        <association property="dept" javaType="Dept">
+            <id column="dept_id" property="deptId"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+
+    <!--查询用户的全部信息-->
+    <select id="findAll" resultMap="userRM">
+        select user.*, dept.dept_name
+        from (select *
+              from user_p u
+                       left join (select p1.*, p2.*
+                                  from user_info_p p1
+                                           left join (select user_info_id m_id, name m_name from user_info_p)
+                                          p2 on p1.MANAGER_ID = p2.m_id)info on u.USER_ID = info.USER_INFO_ID)user
+                 left join dept_p dept on user.dept_id = dept.dept_id
+    </select>
+
+
+</mapper>

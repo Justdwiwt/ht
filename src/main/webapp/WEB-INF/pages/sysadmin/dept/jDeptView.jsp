@@ -43,7 +43,7 @@
                 <tr class="odd">
                     <td>上级部门：</td>
                     <td>
-                        <select name="parentDept.deptId">
+                        <select name="parentDept.deptId" disabled="disabled">
                             <option>---无上级---</option>
                             <c:forEach items="${parentDeptList }" var="p">
                                 <!-- 判断，当前部门不能选择自己的部门为上级部门 -->

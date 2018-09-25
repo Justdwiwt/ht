@@ -104,7 +104,6 @@ public class DeptController {
         return "redirect:/sysadmin/dept/list";
     }
 
-
     // 查看
     @RequestMapping(value = "/sysadmin/dept/toview")
     public String toView() {
