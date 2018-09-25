@@ -84,6 +84,7 @@ public class UserController extends BaseController {
      * @param model unused
      * @return redirect:/sysadmin/user/list
      */
+    @SuppressWarnings("unused")
     @RequestMapping(value = "/save")
     public String saveUser(User user, Model model) {
         //检验用户的用户名是否存在冲突
