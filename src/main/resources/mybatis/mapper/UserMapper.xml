@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="cn.tarena.ht.mapper.UserMapper">
-    <!-- 手动封装结果集 -->
+<mapper namespace="cn.tedu.ht.mapper.UserMapper">
+    <!-- 手动封住结果集 -->
     <resultMap type="User" id="userRM" autoMapping="true">
         <id column="user_id" property="userId"/>
         <!-- 从表userinfo，一对一的关系 -->
@@ -12,7 +12,6 @@
             <result column="name" property="name"/>
             <result column="card_no" property="cardNo"/>
             <result column="join_date" property="joinDate"/>
-
             <result column="salary" property="salary"/>
             <result column="birthday" property="birthday"/>
             <result column="gender" property="gender"/>
@@ -53,9 +52,8 @@
                                          p1.REMARK,
                                          p1.ORDER_NO
                                   from user_info_p p1
-                                           left join (select user_info_id m_id, name m_name from user_info_p)
-                                          p2 on p1.manager_id = p2.m_id)
-                      info on u.user_id = info.user_info_id) user
+                                           left join (select user_info_id m_id, name m_name from user_info_p) p2
+                                               on p1.manager_id = p2.m_id) info on u.user_id = info.user_info_id) user
                  left join dept_p dept on user.dept_id = dept.dept_id
     </sql>
 
@@ -75,7 +73,7 @@
       -->
     <select id="findUserByPages" resultMap="userRM">
         <include refid="selectUser"/>
-        limit #{startRow}, #{pageSize}
+        limit #{startRow},#{pageSize}
     </select>
 
     <!-- 用户的新增，查询上级领导信息 -->

@@ -22,15 +22,15 @@ public class UserController extends BaseController {
     @Autowired
     private DeptService deptService;
 
-    //用户列表页面的跳转
-	/*@RequestMapping(value="/list") //每个请求的action
-	public String toUserList(Model model) {
-		//查询全部的用户信息
-		List<User> userList = userService.findAll();
-		//数据填充
-		model.addAttribute("userList", userList);
-		return "/sysadmin/user/jUserList";
-	}*/
+//    //用户列表页面的跳转
+//	@RequestMapping(value="/list") //每个请求的action
+//	public String toUserList(Model model) {
+//		//查询全部的用户信息
+//		List<User> userList = userService.findAll();
+//		//数据填充
+//		model.addAttribute("userList", userList);
+//		return "/sysadmin/user/jUserList";
+//	}
 
     /**
      * 用户列表页面的跳转

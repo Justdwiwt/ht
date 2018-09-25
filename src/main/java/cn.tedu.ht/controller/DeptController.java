@@ -219,6 +219,16 @@ public class DeptController {
         return jsonObject;//返回一个对象，该对象放在了response中
     }
 
+    /**
+     * 查看页面
+     *
+     * @return /sysadmin/dept/jDeptView
+     */
+    @RequestMapping(value = "/sysadmin/dept/toview")
+    public String toView() {
+        return "/sysadmin/dept/jDeptView";
+    }
+
 	/*@RequestMapping(value="/sysadmin/dept/checkDeptId")
 	@ResponseBody
 	public JSONObject checkDeptId(String deptId) {
