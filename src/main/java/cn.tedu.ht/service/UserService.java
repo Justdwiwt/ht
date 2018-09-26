@@ -23,8 +23,13 @@ public interface UserService {
     //新增操作
     void saveUser(User user);
 
+    //保存信息到中间表中
     void saveUserRole(String userId, String roleIds);
 
+    //根据userid查询中间表中的信息
     List<String> findUserRoleByUserId(String userId);
+
+    //更新user状态
+    void updateState(String[] userIds, int state);
 
 }

@@ -102,21 +102,32 @@
         </trim>
     </insert>
 
+    <!-- role_user_p 保存中间关系表 -->
     <insert id="saveUserRole">
         insert into role_user_p (USER_ID, ROLE_ID)
         values (#{userId}, #{roleId})
     </insert>
 
+    <!-- 防止数据重复的插入中间表 role_user_p  -->
     <delete id="deleteUserRole">
         delete
         from role_user_p
         where USER_ID = #{userId}
     </delete>
 
+    <!--根据user_id查询出所有的已经勾选的信息 -->
     <select id="findUserRoleByUserId" resultType="string">
         select *
         from role_user_p
         where USER_ID = #{userId}
     </select>
+
+    <!--更新部门状态-->
+    <update id="updateState">
+        update user_p set STATE = #{state} where USER_ID in
+        <foreach collection="userIds" open="(" close=")" item="userId" separator=",">
+            #{userId}
+        </foreach>
+    </update>
 
 </mapper>

@@ -95,17 +95,41 @@ public class UserServiceImpl implements UserService {
         userMapper.saveUserInfo(userInfo);
     }
 
+    /**
+     * 保存信息到中间表中
+     *
+     * @param userId  User
+     * @param roleIds Role
+     */
     @Override
     public void saveUserRole(String userId, String roleIds) {
+        //防止数据的重复插入
         userMapper.deleteUserRole(userId);
         String[] roles = roleIds.split(",");
         for (String roleId : roles)
             userMapper.saveUserRole(userId, roleId);
     }
 
+    /**
+     * 根据userid查询中间表中的信息
+     *
+     * @param userId User
+     * @return {@code List<String>}
+     */
     @Override
     public List<String> findUserRoleByUserId(String userId) {
         return userMapper.findUserRoleByUserId(userId);
+    }
+
+    /**
+     * 状态的启动和停用
+     *
+     * @param userIds id
+     * @param state   状态
+     */
+    @Override
+    public void updateState(String[] userIds, int state) {
+        userMapper.updateState(userIds, state);
     }
 
 }

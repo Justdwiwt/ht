@@ -112,6 +112,14 @@ public class UserController extends BaseController {
         return "/sysadmin/user/jUserView";
     }
 
+    /**
+     * 点击角色按钮，实现页面的跳转
+     *
+     * @param userId {@code List<String>}
+     * @param model  zTreeJson   userId
+     * @return /sysadmin/user/jUserRole
+     * @throws JsonProcessingException List->String
+     */
     @RequestMapping(value = "/torole")
     public String toUserRole(String userId, Model model) throws JsonProcessingException {
         List<Role> roleList = roleService.findAll();
@@ -127,9 +135,44 @@ public class UserController extends BaseController {
         return "/sysadmin/user/jUserRole";
     }
 
+    /**
+     * 点击保存按钮，保存勾选的角色信息
+     *
+     * @param userId  User
+     * @param roleIds Role
+     * @return redirect:/sysadmin/user/list
+     */
     @RequestMapping(value = "saveUserRole")
     public String saveRole(String userId, String roleIds) {
         userService.saveUserRole(userId, roleIds);
+        return "redirect:/sysadmin/user/list";
+    }
+
+    /**
+     * 部门状态的启动
+     *
+     * @param userIds array
+     * @return redirect:/sysadmin/user/list
+     */
+    @RequestMapping(value = "/start")
+    public String toStart(@RequestParam(value = "userId",
+            defaultValue = "0") String[] userIds) {
+        int state = 1;
+        userService.updateState(userIds, state);
+        return "redirect:/sysadmin/user/list";
+    }
+
+    /**
+     * 部门状态的停用
+     *
+     * @param userIds array
+     * @return redirect:/sysadmin/user/list
+     */
+    @RequestMapping(value = "/stop")
+    public String toStop(@RequestParam(value = "userId",
+            defaultValue = "0") String[] userIds) {
+        int state = 0;
+        userService.updateState(userIds, state);
         return "redirect:/sysadmin/user/list";
     }
 

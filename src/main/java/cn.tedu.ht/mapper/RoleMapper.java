@@ -12,13 +12,13 @@ public interface RoleMapper {
     @Select(value = "select * from role_p")
     List<Role> findAll();
 
-    @Insert(value = "insert into role_p (role_id, remarks,order_no) values(#{roleId},#{remarks},#{orderNo})")
+    @Insert(value = "insert into role_p (role_id, name, remarks, order_no) values (#{roleId}, #{name}, #{remarks}, #{orderNo})")
     void saveRole(Role role);
 
-    @Update(value = "update role_p set name=#{name}, remarks=#{remarks}, order_no#{order_no} where role_id=#{role_id}")
+    @Update(value = "update role_p set name=#{name}, remarks=#{remarks}, order_no#{orderNo} where role_id=#{roleId}")
     void updateRole(Role role);
 
-    @Select(value = "select * from role_p where role_id=#{role_id}")
+    @Select(value = "select * from role_p where role_id=#{roleId}")
     Role findRoleById(String roleId);
 
     void deleteRole(String[] roleIds);

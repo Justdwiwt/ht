@@ -12,6 +12,12 @@ public interface UserMapper {
     //查询全部的信息
     List<User> findAll();
 
+    //状态的启动和停用
+    //使用注解@Param的形式对map集合进行封装
+    //key : value键值对
+    void updateState(@Param(value = "userIds") String[] userIds,
+                     @Param(value = "state") int state);
+
     //查询用户的总数据量
     int getUserTotalCount();
 
@@ -28,10 +34,13 @@ public interface UserMapper {
     //保存 到 user_info_p表中
     void saveUserInfo(UserInfo userInfo);
 
+    //保存到 role_user_p 表中n
     void saveUserRole(@RequestParam(value = "userId") String userId,
                       @RequestParam(value = "roleId") String roleId);
 
+    //根据userid删除中间表中的信息
     void deleteUserRole(String userId);
 
+    //根据userid查询中间表中的信息
     List<String> findUserRoleByUserId(String userId);
 }
