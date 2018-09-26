@@ -11,7 +11,6 @@
     <script type="text/javascript" src="${ctx}/staticfile/components/zTree/js/jquery.ztree.excheck-3.5.min.js"></script>
     <SCRIPT type="text/javascript">
 
-
         var setting = {
             check: {
                 enable: true
@@ -32,7 +31,6 @@
                 var zTreeObj = $.fn.zTree.getZTreeObj("htZtree");
                 zTreeObj.expandAll(true);		//展开所有树节点
             });
-
 
         //获取到所以用户选中的节点id值
         //获取所有选择的节点，提交时调用下面函数
@@ -60,10 +58,12 @@
             <div id="innerMenubar">
                 <div id="navMenubar">
                     <ul>
-                        <li id="save"><a href="#"
-                                         onclick="submitCheckedNodes();formSubmit('saveUserRole','_self');this.blur();">保存</a>
+                        <li id="save">
+                            <a href="#" onclick="submitCheckedNodes();formSubmit('saveUserRole','_self');this.blur();">保存</a>
                         </li>
-                        <li id="back"><a href="#" onclick="window.history.go(-1);this.blur();">返回</a></li>
+                        <li id="back">
+                            <a href="#" onclick="window.history.go(-1);this.blur();">返回</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -78,8 +78,8 @@
         <div class="eXtremeTable">
             <table id="ec_table" class="tableRegion" width="98%">
                 <!--隐藏域用来传递数据  -->
-                <input type="hidden" id="userId" name="userId" value="${userId}"/>
-                <input type="hidden" id="roleIds" name="roleIds"/>
+                <input type="text" id="userId" name="userId" value="${userId}"/>
+                <input type="text" id="roleIds" name="roleIds"/>
                 <ul id="htZtree" class="ztree"></ul>
             </table>
         </div>
@@ -87,4 +87,3 @@
 </form>
 </body>
 </html>
-

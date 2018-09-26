@@ -83,6 +83,7 @@ public class UserServiceImpl implements UserService {
      *
      * @param user User
      */
+    @Override
     public void saveUser(User user) {
         //自动的生成主键
         String userId = UUID.randomUUID().toString();
@@ -92,6 +93,19 @@ public class UserServiceImpl implements UserService {
         //保存 到 user_info_p表中
         UserInfo userInfo = user.getUserInfo();
         userMapper.saveUserInfo(userInfo);
+    }
+
+    @Override
+    public void saveUserRole(String userId, String roleIds) {
+        userMapper.deleteUserRole(userId);
+        String[] roles = roleIds.split(",");
+        for (String roleId : roles)
+            userMapper.saveUserRole(userId, roleId);
+    }
+
+    @Override
+    public List<String> findUserRoleByUserId(String userId) {
+        return userMapper.findUserRoleByUserId(userId);
     }
 
 }

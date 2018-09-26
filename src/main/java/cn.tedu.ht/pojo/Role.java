@@ -7,6 +7,25 @@ public class Role extends BaseEntity {
     private String remarks;
     private Integer orderNo;
 
+    private String id;
+    private boolean checked;
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public String getId() {
+        return roleId;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getRoleId() {
         return roleId;
     }
@@ -46,6 +65,8 @@ public class Role extends BaseEntity {
                 ", name='" + name + '\'' +
                 ", remarks='" + remarks + '\'' +
                 ", orderNo=" + orderNo +
+                ", id='" + id + '\'' +
+                ", checked=" + checked +
                 '}';
     }
 

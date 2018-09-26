@@ -3,6 +3,7 @@ package cn.tedu.ht.mapper;
 import cn.tedu.ht.pojo.User;
 import cn.tedu.ht.pojo.UserInfo;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -27,4 +28,10 @@ public interface UserMapper {
     //保存 到 user_info_p表中
     void saveUserInfo(UserInfo userInfo);
 
+    void saveUserRole(@RequestParam(value = "userId") String userId,
+                      @RequestParam(value = "roleId") String roleId);
+
+    void deleteUserRole(String userId);
+
+    List<String> findUserRoleByUserId(String userId);
 }

@@ -102,4 +102,21 @@
         </trim>
     </insert>
 
+    <insert id="saveUserRole">
+        insert into role_user_p (USER_ID, ROLE_ID)
+        values (#{userId}, #{roleId})
+    </insert>
+
+    <delete id="deleteUserRole">
+        delete
+        from role_user_p
+        where USER_ID = #{userId}
+    </delete>
+
+    <select id="findUserRoleByUserId" resultType="string">
+        select *
+        from role_user_p
+        where USER_ID = #{userId}
+    </select>
+
 </mapper>

@@ -12,7 +12,7 @@ public interface RoleMapper {
     @Select(value = "select * from role_p")
     List<Role> findAll();
 
-    @Insert(value = "insert into role_p (role_id, remarks,order_no) values(?,?,?,?)")
+    @Insert(value = "insert into role_p (role_id, remarks,order_no) values(#{roleId},#{remarks},#{orderNo})")
     void saveRole(Role role);
 
     @Update(value = "update role_p set name=#{name}, remarks=#{remarks}, order_no#{order_no} where role_id=#{role_id}")

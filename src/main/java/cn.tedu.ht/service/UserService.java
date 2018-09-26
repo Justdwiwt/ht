@@ -23,4 +23,8 @@ public interface UserService {
     //新增操作
     void saveUser(User user);
 
+    void saveUserRole(String userId, String roleIds);
+
+    List<String> findUserRoleByUserId(String userId);
+
 }

@@ -1,10 +1,14 @@
 package cn.tedu.ht.controller;
 
 import cn.tedu.ht.pojo.Dept;
+import cn.tedu.ht.pojo.Role;
 import cn.tedu.ht.pojo.User;
 import cn.tedu.ht.service.DeptService;
+import cn.tedu.ht.service.RoleService;
 import cn.tedu.ht.service.UserService;
 import cn.tedu.ht.tool.PageBean;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +25,8 @@ public class UserController extends BaseController {
     private UserService userService;
     @Autowired
     private DeptService deptService;
+    @Autowired
+    private RoleService roleService;
 
 //    //用户列表页面的跳转
 //	@RequestMapping(value="/list") //每个请求的action
@@ -104,6 +110,27 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/toview")
     public String toView() {
         return "/sysadmin/user/jUserView";
+    }
+
+    @RequestMapping(value = "/torole")
+    public String toUserRole(String userId, Model model) throws JsonProcessingException {
+        List<Role> roleList = roleService.findAll();
+        List<String> userRoles = userService.findUserRoleByUserId(userId);
+        for (Role role : roleList)
+            for (String roleId : userRoles)
+                if (roleId.equals(role.getRoleId()))
+                    role.setChecked(true);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String zTreeJson = objectMapper.writeValueAsString(roleList);
+        model.addAttribute("zTreeJson", zTreeJson);
+        model.addAttribute("userId", userId);
+        return "/sysadmin/user/jUserRole";
+    }
+
+    @RequestMapping(value = "saveUserRole")
+    public String saveRole(String userId, String roleIds) {
+        userService.saveUserRole(userId, roleIds);
+        return "redirect:/sysadmin/user/list";
     }
 
 }
