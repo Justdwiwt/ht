@@ -101,7 +101,7 @@ public class UserController extends BaseController {
      *
      * @return /sysadmin/user/jUserView
      */
-    @RequestMapping(value = "/sysadmin/user/toview")
+    @RequestMapping(value = "/toview")
     public String toView() {
         return "/sysadmin/user/jUserView";
     }
