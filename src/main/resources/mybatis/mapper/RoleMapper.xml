@@ -4,10 +4,17 @@
 
 <mapper namespace="cn.tedu.ht.mapper.RoleMapper">
 
-    <!--查询全部的角色信息-->
-    <select id="findAll" resultType="Role">
-        select *
-        from role_p
-    </select>
+    <!--&lt;!&ndash;查询全部的角色信息&ndash;&gt;-->
+    <!--<select id="findAll" resultType="Role">-->
+    <!--select *-->
+    <!--from role_p-->
+    <!--</select>-->
+
+    <delete id="deleteRole">
+        delete from role_p where ROLE_ID in
+        <foreach collection="array" open="(" close=")" item="roleId" separator=",">
+            #{roleId}
+        </foreach>
+    </delete>
 
 </mapper>

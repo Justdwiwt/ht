@@ -8,4 +8,12 @@ public interface RoleService {
 
     List<Role> findAll();
 
+    void saveRole(Role role);
+
+    void updateRole(Role role);
+
+    Role findRoleById(String roleId);
+
+    void deleteRole(String[] roleIds);
+
 }
