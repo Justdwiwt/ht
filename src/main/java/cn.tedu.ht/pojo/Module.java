@@ -23,7 +23,7 @@ public class Module extends BaseEntity {
     }
 
     public String getpId() {
-        return parentModule.moduleId;
+        return parentModule == null ? "0" : parentModule.moduleId;
     }
 
     public void setpId(String pId) {
