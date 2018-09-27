@@ -1,7 +1,11 @@
 package cn.tedu.ht.controller;
 
+import cn.tedu.ht.pojo.Module;
 import cn.tedu.ht.pojo.Role;
+import cn.tedu.ht.service.ModuleService;
 import cn.tedu.ht.service.RoleService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,8 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ModuleService moduleService;
 
     /**
      * 查询全部的角色信息
@@ -107,4 +113,13 @@ public class RoleController {
         return "/sysadmin/role/jRoleView";
     }
 
+    @RequestMapping(value = "tomodule")
+    public String toRoleModule(String roleId, Model model) throws JsonProcessingException {
+        List<Module> moduleList = moduleService.findAll();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String zTreeJson = objectMapper.writeValueAsString(moduleList);
+        model.addAttribute("zTreeJson", zTreeJson);
+        model.addAttribute("roleId", roleId);
+        return "/sysadmin/role/jRoleModule";
+    }
 }
