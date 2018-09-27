@@ -9,7 +9,9 @@
     <script> DD_belatedPNG.fix('*'); </script>
     <script type="text/javascript">
         function resetInfo() {
-            var value = $("#reset").val();
+            //$("#reset").val("");
+            //$("#reset").html("");
+            var value = $("#reseter").val();
             alert(value);
         }
     </script>
@@ -21,14 +23,13 @@
         <div class="box">
             <div class="inputstyle">
                 <div class="inputlable">用户名：
-                    <input type="text" value="tony" name="userName" id="userName" onFocus="this.select();"
-                           title="请您输入用户名"/>
+                    <input type="text" value="" name="userName" id="userName" onFocus="this.select();" title="请您输入用户名"/>
                     <div id="ts" style="z-index:1;">
                     </div>
                 </div>
 
                 <div class="inputlable">密　码：
-                    <input type="password" value="123456" name="password" id="password"
+                    <input type="password" value="" name="password" id="password"
                            onfocus="$('#ts').css('display','none');this.select();"
                            onKeyDown="javascript:if(event.keyCode==13){ submitFind(); }" title="请您输入密码"/>
                 </div>

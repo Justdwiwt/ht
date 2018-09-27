@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -75,6 +76,34 @@ public class ModuleController {
     @RequestMapping(value = "toupdate")
     public String toModuleUpdate() {
         return "/sysadmin/module/jModuleUpdate";
+    }
+
+    /**
+     * 部门状态的停用
+     *
+     * @param moduleIds array
+     * @return redirect:/sysadmin/module/list
+     */
+    @RequestMapping(value = "stop")
+    public String toStop(@RequestParam(value = "moduleId",
+            defaultValue = "0") String[] moduleIds) {
+        int state = 0;
+        moduleService.updateState(moduleIds, state);
+        return "redirect:/sysadmin/module/list";
+    }
+
+    /**
+     * 部门状态的启动
+     *
+     * @param moduleIds array
+     * @return redirect:/sysadmin/module/list
+     */
+    @RequestMapping(value = "start")
+    public String toStart(@RequestParam(value = "moduleId",
+            defaultValue = "0") String[] moduleIds) {
+        int state = 1;
+        moduleService.updateState(moduleIds, state);
+        return "redirect:/sysadmin/module/list";
     }
 
 }

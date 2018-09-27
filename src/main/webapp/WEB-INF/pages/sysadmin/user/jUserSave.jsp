@@ -56,7 +56,7 @@
                     <td><input type="text" name="userInfo.cardNo"/></td>
                     <td>上级领导:</td>
                     <td>
-                        <select name="userInfo.userInfoId" style="width:120px">
+                        <select name="userInfo.managerInfo.userInfoId" style="width:120px">
                             <option value="">---请选择---</option>
                             <c:forEach items="${userInfoList}" var="p">
                                 <option value="${p.userInfoId}">${p.name}</option>

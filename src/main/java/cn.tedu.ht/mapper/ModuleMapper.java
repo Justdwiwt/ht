@@ -2,6 +2,7 @@ package cn.tedu.ht.mapper;
 
 import cn.tedu.ht.pojo.Module;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -18,5 +19,8 @@ public interface ModuleMapper {
     void saveModule(Module module);
 
     List<String> findRoleModuleByRoleId(String roleId);
+
+    void updateState(@Param(value = "moduleIds") String[] moduleIds,
+                     @Param(value = "state") int state);
 
 }

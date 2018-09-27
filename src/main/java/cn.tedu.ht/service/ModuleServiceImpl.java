@@ -33,4 +33,9 @@ public class ModuleServiceImpl implements ModuleService {
         return moduleMapper.findRoleModuleByRoleId(roleId);
     }
 
+    @Override
+    public void updateState(String[] moduleIds, int state) {
+        moduleMapper.updateState(moduleIds, state);
+    }
+
 }

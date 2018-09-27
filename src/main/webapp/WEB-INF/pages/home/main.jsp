@@ -27,8 +27,8 @@
         }
 
         .msgcontent
-        ul
 
+        ul
         (
         margin:
 
@@ -53,8 +53,8 @@
         }
 
         .msgbackcontent
-        ul
 
+        ul
         (
         margin:
 

@@ -14,4 +14,6 @@ public interface ModuleService {
 
     List<String> findRoleModuleByRoleId(String roleId);
 
+    void updateState(String[] moduleIds, int state);
+
 }

@@ -27,4 +27,11 @@
         where ROLE_ID = #{roleId}
     </select>
 
+    <update id="updateState">
+        update module_p set STATE = #{state} where MODULE_ID in
+        <foreach collection="moduleIds" open="(" close=")" separator=",">
+            #{moduleId}
+        </foreach>
+    </update>
+
 </mapper>

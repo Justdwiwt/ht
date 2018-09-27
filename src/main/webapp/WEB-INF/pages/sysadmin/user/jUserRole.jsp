@@ -32,17 +32,23 @@
                 zTreeObj.expandAll(true);		//展开所有树节点
             });
 
+
         //获取到所以用户选中的节点id值
         //获取所有选择的节点，提交时调用下面函数
         function submitCheckedNodes(treeNode) {
+            //自定义的数组
             var nodes = new Array();
             var zTreeObj = $.fn.zTree.getZTreeObj("htZtree");
+            //getCheckedNodes 是zTree对象提供的方法
+            //参数传入true，能够拿到被选择的复选框的节点
             nodes = zTreeObj.getCheckedNodes(true);		//取得选中的结点
             var str = "";
             for (i = 0; i < nodes.length; i++) {
                 if (str != "") {
                     str += ",";
                 }
+                //获取每一个被选择节点的id的值，拼接成了字符串
+                // 最终的字符串  roleId1,roleId2,roleId3
                 str += nodes[i].id;
             }
 
@@ -58,12 +64,10 @@
             <div id="innerMenubar">
                 <div id="navMenubar">
                     <ul>
-                        <li id="save">
-                            <a href="#" onclick="submitCheckedNodes();formSubmit('saveUserRole','_self');this.blur();">保存</a>
+                        <li id="save"><a href="#"
+                                         onclick="submitCheckedNodes();formSubmit('saveUserRole','_self');this.blur();">保存</a>
                         </li>
-                        <li id="back">
-                            <a href="#" onclick="window.history.go(-1);this.blur();">返回</a>
-                        </li>
+                        <li id="back"><a href="#" onclick="window.history.go(-1);this.blur();">返回</a></li>
                     </ul>
                 </div>
             </div>
@@ -87,3 +91,4 @@
 </form>
 </body>
 </html>
+
