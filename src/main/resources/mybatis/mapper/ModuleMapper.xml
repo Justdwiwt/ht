@@ -20,5 +20,11 @@
                  left join (select MODULE_ID p_id, NAME p_name from module_p)m2 on m1.PARENT_ID = m2.p_id
     </select>
 
+    <!--查询中间表module信息-->
+    <select id="findRoleModuleByRoleId" resultType="string">
+        select *
+        from role_module_p
+        where ROLE_ID = #{roleId}
+    </select>
 
 </mapper>

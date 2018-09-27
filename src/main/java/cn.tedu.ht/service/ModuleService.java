@@ -12,4 +12,6 @@ public interface ModuleService {
 
     void saveModule(Module module);
 
+    List<String> findRoleModuleByRoleId(String roleId);
+
 }

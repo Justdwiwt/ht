@@ -115,11 +115,22 @@ public class RoleController {
 
     @RequestMapping(value = "tomodule")
     public String toRoleModule(String roleId, Model model) throws JsonProcessingException {
+        List<String> checkedModule = moduleService.findRoleModuleByRoleId(roleId);
         List<Module> moduleList = moduleService.findAll();
+        for (Module module : moduleList)
+            if (checkedModule.contains(module.getModuleId()))
+                module.setChecked(true);
         ObjectMapper objectMapper = new ObjectMapper();
         String zTreeJson = objectMapper.writeValueAsString(moduleList);
         model.addAttribute("zTreeJson", zTreeJson);
         model.addAttribute("roleId", roleId);
         return "/sysadmin/role/jRoleModule";
     }
+
+    @RequestMapping(value = "saveRoleModule")
+    public String saveRoleModule(String roleId, String[] moduleIds) {
+        roleService.saveRoleModule(roleId, moduleIds);
+        return "redirect:/sysadmin/role/jRoleModule";
+    }
+
 }

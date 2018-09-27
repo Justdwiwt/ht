@@ -16,4 +16,5 @@ public interface RoleService {
 
     void deleteRole(String[] roleIds);
 
+    void saveRoleModule(String roleId, String[] moduleIds);
 }

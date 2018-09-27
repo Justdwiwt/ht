@@ -2,6 +2,7 @@ package cn.tedu.ht.mapper;
 
 import cn.tedu.ht.pojo.Role;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -23,4 +24,6 @@ public interface RoleMapper {
 
     void deleteRole(String[] roleIds);
 
+    void saveRoleModule(@Param(value = "roleId") String roleId,
+                        @Param(value = "moduleIds") String[] moduleIds);
 }

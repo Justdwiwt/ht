@@ -28,4 +28,9 @@ public class ModuleServiceImpl implements ModuleService {
         moduleMapper.saveModule(module);
     }
 
+    @Override
+    public List<String> findRoleModuleByRoleId(String roleId) {
+        return moduleMapper.findRoleModuleByRoleId(roleId);
+    }
+
 }

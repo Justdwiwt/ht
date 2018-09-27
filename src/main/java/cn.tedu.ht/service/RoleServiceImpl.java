@@ -68,4 +68,9 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.deleteRole(roleIds);
     }
 
+    @Override
+    public void saveRoleModule(String roleId, String[] moduleIds) {
+        roleMapper.saveRoleModule(roleId, moduleIds);
+    }
+
 }
