@@ -132,4 +132,16 @@ public class UserServiceImpl implements UserService {
         userMapper.updateState(userIds, state);
     }
 
+    /**
+     * 根据加密后的密码和用户名 查询数据库
+     *
+     * @param userName    name
+     * @param md5Password md5Pwd
+     * @return User
+     */
+    @Override
+    public User findUserByU_P(String userName, String md5Password) {
+        return null;
+    }
+
 }
