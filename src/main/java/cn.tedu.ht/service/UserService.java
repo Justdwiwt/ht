@@ -33,6 +33,6 @@ public interface UserService {
     void updateState(String[] userIds, int state);
 
     // 根据加密后的密码和用户名 查询数据库
-    User findUserByU_P(String userName, String md5Password);
+    User checkLoginByUser(String userName, String password);
 
 }

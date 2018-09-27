@@ -17,15 +17,15 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    /**
-     * 用户登录页面
-     *
-     * @return /sysadmin/login/login
-     */
-    @RequestMapping(value = "/tologin")
-    public String toLogin() {
-        return "/sysadmin/login/login";
-    }
+//    /**
+//     * 用户登录页面
+//     *
+//     * @return /sysadmin/login/login
+//     */
+//    @RequestMapping(value = "/tologin")
+//    public String toLogin() {
+//        return "/sysadmin/login/login";
+//    }
 
     /**
      * 登录验证
@@ -39,8 +39,9 @@ public class LoginController {
      * <p> {@code StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)} /sysadmin/login/login
      * <p> {@code user == null} /sysadmin/login/login
      */
+    @SuppressWarnings("ConstantConditions")
     @RequestMapping(value = "/login")
-    public String login(String userName, String password, Model model, HttpSession session) {
+    public String toLogin(String userName, String password, Model model, HttpSession session) {
         //1、判断用户名和密码是否为空
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)) {
             //证明 用户名  或者 密码 是空的
@@ -50,19 +51,19 @@ public class LoginController {
         //2、根据用户名和密码判断当前用户是否存在
         String md5Password = Md5Password.getMd5HashPassword(password, userName);
         //根据加密后的密码和用户名 查询数据库
-        User user = userService.findUserByU_P(userName, md5Password);
-        if (user == null) {
+        User user = userService.checkLoginByUser(userName, md5Password);
+        if (StringUtils.isEmpty(user) || user == null) {
             //用户名或者密码不正确
             model.addAttribute("errorInfo", "用户名和密码不正确");
             return "/sysadmin/login/login";
         }
         //3、将用户数据存入到session中
         session.setAttribute("sessionUser", user);
-        return "redirect:/home";
+        return "redirect:/home.action";
     }
 
     /**
-     * 用户登出功能
+     * 点击登出按钮，页面的跳转
      *
      * @param session sessionUser
      * @return /sysadmin/login/logout
@@ -70,7 +71,7 @@ public class LoginController {
     @RequestMapping(value = "/logout")
     public String toLoginOut(HttpSession session) {
         session.setAttribute("sessionUser", null);
-        return "/sysadmin/login/logout";
+        return "/sysadmin/login/login";
     }
 
 }

@@ -17,6 +17,12 @@ public class ModuleController {
     @Autowired
     private ModuleService moduleService;
 
+    /**
+     * 页面的跳转
+     *
+     * @param model moduleList
+     * @return /sysadmin/module/jModuleList
+     */
     @RequestMapping(value = "list")
     public String toModuleList(Model model) {
         List<Module> moduleList = moduleService.findAll();
@@ -24,6 +30,12 @@ public class ModuleController {
         return "/sysadmin/module/jModuleList";
     }
 
+    /**
+     * 点击新增按钮，跳转新增页面
+     *
+     * @param model parentModuleList
+     * @return /sysadmin/module/jModuleSave
+     */
     @RequestMapping(value = "tosave")
     public String toModuleSave(Model model) {
         List<Module> parentModuleList = moduleService.findParentModule();
@@ -31,12 +43,38 @@ public class ModuleController {
         return "/sysadmin/module/jModuleSave";
     }
 
+    /**
+     * 点击保存按钮，进行数据的新增
+     *
+     * @param module Module
+     * @return redirect:/sysadmin/module/list
+     */
     @RequestMapping(value = "save")
     public String saveModule(Module module) {
         String uuid = UUID.randomUUID().toString();
         module.setModuleId(uuid);
         moduleService.saveModule(module);
         return "redirect:/sysadmin/module/list";
+    }
+
+    /**
+     * 查看模块信息
+     *
+     * @return /sysadmin/module/jModuleView
+     */
+    @RequestMapping(value = "toview")
+    public String toView() {
+        return "/sysadmin/module/jModuleView";
+    }
+
+    /**
+     * 更新模块
+     *
+     * @return /sysadmin/module/jModuleUpdate
+     */
+    @RequestMapping(value = "toupdate")
+    public String toModuleUpdate() {
+        return "/sysadmin/module/jModuleUpdate";
     }
 
 }

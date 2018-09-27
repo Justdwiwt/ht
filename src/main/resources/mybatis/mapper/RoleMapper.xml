@@ -20,7 +20,7 @@
     <!--批量插入中间表的信息-->
     <insert id="saveRoleModule">
         insert into role_module_p (MODULE_ID,ROLE_ID) values
-        <foreach collection="array" item="moduleId" separator=",">
+        <foreach collection="moduleIds" item="moduleId" separator=",">
             (#{moduleId}, #{roleId})
         </foreach>
     </insert>

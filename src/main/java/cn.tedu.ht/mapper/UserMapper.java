@@ -45,6 +45,7 @@ public interface UserMapper {
     List<String> findUserRoleByUserId(String userId);
 
     // 根据加密后的密码和用户名 查询数据库
-    User findUserByU_P(String userName, String md5Password);
+    User checkLoginByUser(@Param(value = "userName") String userName,
+                          @Param(value = "password") String password);
 
 }

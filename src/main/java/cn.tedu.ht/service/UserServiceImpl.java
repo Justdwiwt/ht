@@ -135,13 +135,13 @@ public class UserServiceImpl implements UserService {
     /**
      * 根据加密后的密码和用户名 查询数据库
      *
-     * @param userName    name
-     * @param md5Password md5Pwd
+     * @param userName name
+     * @param password pwd
      * @return User
      */
     @Override
-    public User findUserByU_P(String userName, String md5Password) {
-        return null;
+    public User checkLoginByUser(String userName, String password) {
+        return userMapper.checkLoginByUser(userName, password);
     }
 
 }

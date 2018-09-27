@@ -69,8 +69,9 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void saveRoleModule(String roleId, String[] moduleIds) {
-        roleMapper.saveRoleModule(roleId, moduleIds);
+    public void saveRoleModule(String roleId, String moduleIds) {
+        String[] modules = moduleIds.split(",");
+        roleMapper.saveRoleModule(roleId, modules);
     }
 
 }

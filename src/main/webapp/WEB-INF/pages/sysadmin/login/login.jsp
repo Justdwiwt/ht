@@ -7,6 +7,12 @@
           media="all"/>
     <script src="${ctx}/staticfile/components/pngfix/DD_belatedPNG.js"></script>
     <script> DD_belatedPNG.fix('*'); </script>
+    <script type="text/javascript">
+        function resetInfo() {
+            var value = $("#reset").val();
+            alert(value);
+        }
+    </script>
 </head>
 
 <body>
@@ -32,7 +38,7 @@
                        onmouseover="this.className='loginImgOver'"
                        onmouseout="this.className='loginImgOut'"
                 />
-                <input class="resetImgOut" value="" type="button"
+                <input class="resetImgOut" value="" type="button" onclick="formSubmit('${ctx}/logout','_self');"
                        onmouseover="this.className='resetImgOver'"
                        onmouseout="this.className='resetImgOut'"
                 />

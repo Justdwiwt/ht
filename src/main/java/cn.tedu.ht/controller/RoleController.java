@@ -113,6 +113,14 @@ public class RoleController {
         return "/sysadmin/role/jRoleView";
     }
 
+    /**
+     * 点击模块按钮，页面的跳转：角色模块分配页面
+     *
+     * @param roleId id
+     * @param model  zTreeJson   roleId
+     * @return /sysadmin/role/jRoleModule
+     * @throws JsonProcessingException Module -> String
+     */
     @RequestMapping(value = "tomodule")
     public String toRoleModule(String roleId, Model model) throws JsonProcessingException {
         List<String> checkedModule = moduleService.findRoleModuleByRoleId(roleId);
@@ -127,8 +135,15 @@ public class RoleController {
         return "/sysadmin/role/jRoleModule";
     }
 
+    /**
+     * 批量插入
+     *
+     * @param roleId    id
+     * @param moduleIds Module
+     * @return redirect:/sysadmin/role/jRoleModule
+     */
     @RequestMapping(value = "saveRoleModule")
-    public String saveRoleModule(String roleId, String[] moduleIds) {
+    public String saveRoleModule(String roleId, String moduleIds) {
         roleService.saveRoleModule(roleId, moduleIds);
         return "redirect:/sysadmin/role/jRoleModule";
     }

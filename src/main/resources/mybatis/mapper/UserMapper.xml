@@ -130,4 +130,10 @@
         </foreach>
     </update>
 
+    <!-- 登录时，根据用户名和密码查询是否存在此人 -->
+    <select id="checkLoginByUser" resultMap="userRM">
+        <include refid="selectUser"/>
+        where username=#{userName} and password=#{password}
+    </select>
+
 </mapper>
