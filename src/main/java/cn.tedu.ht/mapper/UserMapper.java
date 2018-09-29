@@ -48,4 +48,8 @@ public interface UserMapper {
     User checkLoginByUser(@Param(value = "userName") String userName,
                           @Param(value = "password") String password);
 
+    //shiro的登录验证
+    User findUserByUsername(String username);
+
+    List<String> findModuleNameByUserId(String userId);
 }

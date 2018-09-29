@@ -136,4 +136,39 @@
         where username=#{userName} and password=#{password}
     </select>
 
+    <select id="findUserByUsername" resultMap="userRM">
+        select user.*, dept.dept_name
+        from (select *
+              from (select * from user_p where username = #{username}) u
+                       left join (select p1.USER_INFO_ID,
+                                         p1.NAME,
+                                         p1.CARD_NO,
+                                         p2.m_id,
+                                         p2.m_name,
+                                         p1.JOIN_DATE,
+                                         p1.SALARY,
+                                         p1.BIRTHDAY,
+                                         p1.GENDER,
+                                         p1.STATION,
+                                         p1.TELEPHONE,
+                                         p1.USER_LEVEL,
+                                         p1.REMARK,
+                                         p1.ORDER_NO
+                                  from user_info_p p1
+                                           left join (select user_info_id m_id, name m_name from user_info_p) p2
+                                               on p1.manager_id = p2.m_id) info on u.user_id = info.user_info_id) user
+                 left join dept_p dept on user.dept_id = dept.dept_id
+    </select>
+
+    <!--shiro的权限认证-->
+    <select id="findModuleNameByUserId" resultType="string">
+        select NAME
+        from module_p
+        where MODULE_ID in
+              (select MODULE_ID
+               from role_module_p
+               where ROLE_ID in (select ROLE_ID from role_user_p where USER_ID = #{userId}))
+    </select>
+
+
 </mapper>

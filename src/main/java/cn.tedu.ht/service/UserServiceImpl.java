@@ -144,4 +144,20 @@ public class UserServiceImpl implements UserService {
         return userMapper.checkLoginByUser(userName, password);
     }
 
+    /**
+     * shiro的登录验证
+     *
+     * @param username username
+     * @return User
+     */
+    @Override
+    public User findUserByUsername(String username) {
+        return userMapper.findUserByUsername(username);
+    }
+
+    @Override
+    public List<String> findModuleNameByUserId(String userId) {
+        return userMapper.findModuleNameByUserId(userId);
+    }
+
 }

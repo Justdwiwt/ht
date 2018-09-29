@@ -35,4 +35,9 @@ public interface UserService {
     // 根据加密后的密码和用户名 查询数据库
     User checkLoginByUser(String userName, String password);
 
+    //shiro的登录验证
+    User findUserByUsername(String username);
+
+    List<String> findModuleNameByUserId(String userId);
+
 }

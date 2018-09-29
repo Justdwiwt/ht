@@ -264,17 +264,19 @@
                         <span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
                         <span id="topmenu" onclick="toModule('cargo');">货运管理</span><span id="tm_separator"></span>
                         <span id="topmenu" onclick="toModule('baseinfo');">基础信息</span><span id="tm_separator"></span>
-                        <span id="topmenu" onclick="toModule('sysadmin');">系统管理</span>
+                        <shiro:hasPermission name="系统管理">
+                            <span id="topmenu" onclick="toModule('sysadmin');">系统管理</span>
+                        </shiro:hasPermission>
                     </div>
-                    <span id="rightKey" onmouseover="periodOffset(this, 'right')"><img
-                            src="${ctx}/staticfile/skin/default/images/title/right_arrow.png"/></span>
+                    <span id="rightKey" onmouseover="periodOffset(this, 'right')">
+                        <img src="${ctx}/staticfile/skin/default/images/title/right_arrow.png"/></span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="prompt_div"><img src="${ctx}/staticfile/skin/default/images/title/prompt.png"/><span
-            style="position:absolute;top:2px;left:35px;z-index: 99999;width:100%;color:#FFFFFF;text-align: left; ">鼠标指向箭头位置<br/>可显示更多菜单项</span>
+    <div id="prompt_div"><img src="${ctx}/staticfile/skin/default/images/title/prompt.png"/>
+        <span style="position:absolute;top:2px;left:35px;z-index: 99999;width:100%;color:#FFFFFF;text-align: left; ">鼠标指向箭头位置<br/>可显示更多菜单项</span>
     </div>
 
     <form name="form1" style="display: none;"></form>
