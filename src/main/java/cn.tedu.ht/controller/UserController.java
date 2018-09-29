@@ -118,7 +118,7 @@ public class UserController extends BaseController {
      * @param userId {@code List<String>}
      * @param model  zTreeJson   userId
      * @return /sysadmin/user/jUserRole
-     * @throws JsonProcessingException List->String
+     * @throws JsonProcessingException List - String
      */
     @RequestMapping(value = "/torole")
     public String toUserRole(String userId, Model model) throws JsonProcessingException {

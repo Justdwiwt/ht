@@ -119,7 +119,7 @@ public class RoleController {
      * @param roleId id
      * @param model  zTreeJson   roleId
      * @return /sysadmin/role/jRoleModule
-     * @throws JsonProcessingException Module -> String
+     * @throws JsonProcessingException Module - String
      */
     @RequestMapping(value = "tomodule")
     public String toRoleModule(String roleId, Model model) throws JsonProcessingException {
